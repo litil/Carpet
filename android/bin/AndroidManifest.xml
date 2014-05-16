@@ -9,12 +9,13 @@
         android:targetSdkVersion="19" />
 
     <application
+        android:name="com.matelli.carpet.application.CarpetApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.matelli.carpet.WelcomeActivity"
+            android:name="com.matelli.carpet.activities.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.matelli.carpet.ConducteurActivity"
+            android:name="com.matelli.carpet.activities.ConducteurActivity"
             android:label="@string/title_activity_conducteur" >
         </activity>
         <activity
-            android:name="com.matelli.carpet.EnfantActivity"
+            android:name="com.matelli.carpet.activities.EnfantActivity"
             android:label="@string/title_activity_enfant" >
         </activity>
     </application>

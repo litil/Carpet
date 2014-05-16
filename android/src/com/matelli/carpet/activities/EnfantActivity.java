@@ -1,4 +1,8 @@
-package com.matelli.carpet;
+package com.matelli.carpet.activities;
+
+import com.matelli.carpet.R;
+import com.matelli.carpet.R.layout;
+import com.matelli.carpet.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
