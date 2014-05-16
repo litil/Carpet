@@ -4,5 +4,22 @@
     <string name="app_name">CarpetAndroid</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_conducteur">ConducteurActivity</string>
+    <string name="title_activity_enfant">EnfantActivity</string>
+    
+    
+    
+    <!-- WELCOME -->
+    <string name="welcome_carpet">Welcome Carpet!</string>
+    <string name="goto_enfant">Vers enfant</string>
+    <string name="goto_conducteur">Vers conducteur</string>
+    
+    
+    <!-- ENFANT -->
+    <string name="welcome_enfant">Welcome enfant!</string>
+    
+    
+    <!-- CONDUCTEUR -->
+    <string name="welcome_conducteur">Welcome conducteur!</string>
 
 </resources>

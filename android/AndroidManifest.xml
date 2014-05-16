@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.matelli.carpet.ConducteurActivity"
+            android:label="@string/title_activity_conducteur" >
+        </activity>
+        <activity
+            android:name="com.matelli.carpet.EnfantActivity"
+            android:label="@string/title_activity_enfant" >
+        </activity>
     </application>
 
 </manifest>
