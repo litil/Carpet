@@ -1,17 +1,15 @@
 package com.matelli.carpet.activities;
 
-import com.matelli.carpet.R;
-import com.matelli.carpet.R.layout;
-import com.matelli.carpet.R.menu;
-
+import roboguice.activity.RoboActivity;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.Menu;
 
-public class ConducteurActivity extends Activity {
+import com.matelli.carpet.R;
+
+public class ConducteurActivity extends RoboActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_conducteur);
 	}
