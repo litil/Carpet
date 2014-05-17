@@ -1,8 +1,12 @@
 package com.matelli.carpet.game.Scene;
 
+import android.util.Log;
+
 import com.matelli.carpet.game.ResourcesManager;
+import com.matelli.carpet.models.User;
 
 import org.andengine.engine.Engine;
+import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder;
 import org.andengine.ui.IGameInterface;
 
 /**
@@ -15,7 +19,6 @@ public class SceneManager
     //---------------------------------------------
 
     private BaseScene splashScene;
-    private BaseScene menuScene;
     private BaseScene gameScene;
     private BaseScene loadingScene;
 
@@ -55,8 +58,6 @@ public class SceneManager
         switch (sceneType)
         {
             case SCENE_MENU:
-                setScene(menuScene);
-                break;
             case SCENE_GAME:
                 setScene(gameScene);
                 break;
@@ -98,17 +99,30 @@ public class SceneManager
         pOnCreateSceneCallback.onCreateSceneFinished(splashScene);
     }
 
-    public void createGameScene()
+    public void createGameScene(User user)
     {
-        ResourcesManager.getInstance().loadGameResources();
-        menuScene = new GameScene();
-        setScene(menuScene);
-        disposeSplashScene();
+
+
+        try {
+            ResourcesManager.getInstance().loadRessources();
+
+            GameScene scene = new GameScene();
+
+            gameScene = scene;
+
+            setScene(gameScene);
+            disposeSplashScene();
+        } catch (ITextureAtlasBuilder.TextureAtlasBuilderException e) {
+            e.printStackTrace();
+            Log.d("exception", "florianburel");
+
+        }
+
     }
 
     private void disposeSplashScene()
     {
-        ResourcesManager.getInstance().unloadSplashScreen();
+         ResourcesManager.getInstance().unloadSplashScreen();
         splashScene.disposeScene();
         splashScene = null;
     }

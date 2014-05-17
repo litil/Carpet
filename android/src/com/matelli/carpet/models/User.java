@@ -31,10 +31,11 @@ public class User {
 	
 	
 	
-	public User createFakeUser(){
+	public static User createFakeUser(){
 		User user = new User();
 		
 		user.setLogin("John Doe");
+        user.setScore(4500);
 		
 		return user;
 	}

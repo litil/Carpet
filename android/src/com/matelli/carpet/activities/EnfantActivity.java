@@ -22,9 +22,12 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 
+
+import com.matelli.carpet.application.CarpetApplication;
 import com.matelli.carpet.config.CarpetConstantes;
 import com.matelli.carpet.game.ResourcesManager;
 import com.matelli.carpet.game.Scene.SceneManager;
+
 
 public class EnfantActivity extends BaseGameActivity {
 	private static final String TAG = "EnfantActivity";
@@ -105,7 +108,6 @@ public class EnfantActivity extends BaseGameActivity {
    @Override
     public Engine onCreateEngine(EngineOptions pEngineOptions)
     {
-        Log.d("I'm here", "florianburel");
         return new LimitedFPSEngine(pEngineOptions, 60);
     }
 
@@ -142,13 +144,25 @@ public class EnfantActivity extends BaseGameActivity {
     public void onPopulateScene(Scene pScene, OnPopulateSceneCallback pOnPopulateSceneCallback) throws IOException
     {
 
+
+
+
         mEngine.registerUpdateHandler(new TimerHandler(2f, new ITimerCallback()
         {
+
+
             public void onTimePassed(final TimerHandler pTimerHandler)
             {
+
+
+                Log.d("ressources loaded", "florianburel");
+
+
                 mEngine.unregisterUpdateHandler(pTimerHandler);
 
-                SceneManager.getInstance().createGameScene();
+
+
+                SceneManager.getInstance().createGameScene(((CarpetApplication)getApplication()).getUser());
             }
         }));
         pOnPopulateSceneCallback.onPopulateSceneFinished();
