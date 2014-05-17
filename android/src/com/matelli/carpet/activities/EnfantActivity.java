@@ -1,6 +1,8 @@
 package com.matelli.carpet.activities;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.LimitedFPSEngine;
@@ -14,6 +16,7 @@ import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,15 +24,23 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.android.volley.Request.Method;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.google.gson.Gson;
 import com.matelli.carpet.config.CarpetConstantes;
 import com.matelli.carpet.game.ResourcesManager;
 import com.matelli.carpet.game.Scene.SceneManager;
+import com.matelli.carpet.models.EventDTO;
+import com.matelli.carpet.network.VolleyAuthStringRequest;
+import com.matelli.carpet.network.VolleySharedInstance;
 
 public class EnfantActivity extends BaseGameActivity {
 	private static final String TAG = "EnfantActivity";
 
     private Camera camera;
     private ResourcesManager resourcesManager;
+    private Activity currentActivity;
 
     private final static float SCREEN_RESOLUTION_WIDTH = 1920;
     private final static float SCREEN_RESOLUTION_HEIGHT = 1080;
@@ -44,7 +55,6 @@ public class EnfantActivity extends BaseGameActivity {
 			
 			
 			// send it to web services
-			
 			Log.d(TAG, "sdljkfdsjhf jksdhfjksdhfjksdhjk fdhskfhdjkshfkjsdhfjk sdf s");
 			
 		}
@@ -55,6 +65,8 @@ public class EnfantActivity extends BaseGameActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentActivity = this;
+        
         
         registerReceiver(speedLimitReachedReceiver, filterSpeedLimitReachedReceiver);
     }

@@ -1,6 +1,5 @@
 package com.matelli.carpet.services;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import android.app.Service;
@@ -14,34 +13,36 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.android.volley.Request.Method;
 import com.matelli.carpet.application.CarpetApplication;
 import com.matelli.carpet.config.CarpetConstantes;
 import com.matelli.carpet.models.Coordonnees;
 import com.matelli.carpet.utils.FakeDataHelper;
 
 public class LocationService extends Service {
+	private static final String TAG = "LocationService";
 
 	private CarpetApplication app = null;
 	private LocationManager lm = null;
-	
+
 	private List<Coordonnees> coordonnees = null;
-	
-	
+
+
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		if(coordonnees == null || coordonnees.size() == 0) {
 			coordonnees = FakeDataHelper.fillListWithFakeCoordonnees();
-						
+
 			// On récupère le location manager et on l'initialise en mode test
 			app =(CarpetApplication)this.getApplication();
 			lm = app.getLm();
-			
+
 			lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
 			lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-			
+
 			// On lance le thread qui va changer les coordonnées géographiques
 			new Thread(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					for(Coordonnees coordonnee : coordonnees) {
@@ -49,13 +50,13 @@ public class LocationService extends Service {
 						try {
 							Thread.sleep(CarpetConstantes.TIME_CHECK_VITESSE);
 						} catch(Exception e) {
-							
+
 						}
 					}
 				}
 			}).start();
 		}
-		
+
 		return Service.START_NOT_STICKY;
 	}
 
@@ -64,19 +65,22 @@ public class LocationService extends Service {
 		//TODO for communication return IBinder implementation
 		return null;
 	}
-	
+
 	// Listener pour les changement de coordonnees géographiques
 	private final LocationListener locationListener = new LocationListener() {
-		public void onLocationChanged(Location location) {
+
+		public void onLocationChanged(final Location location) {
 			double longitude = location.getLongitude();
 			double latitude = location.getLatitude();
 			Log.v("TEST", "Longitude : " + longitude + " - Latitude : " + latitude + " - Vitesse : " + location.getSpeed());
-			
+
 			// TODO détecter depassement de vitesse et broadcaster un message
 			if(location.getSpeed() > 50) {
+				// send broadcast
 				Intent intent = new Intent();
 				intent.setAction(CarpetConstantes.BROADCAST_VITESSE_LIMITE_ATTEINTE);
 				sendBroadcast(intent);
+
 			}
 		}
 
@@ -92,7 +96,7 @@ public class LocationService extends Service {
 		public void onStatusChanged(String provider, int status, Bundle extras) {
 		}
 	};
-	
+
 	/**
 	 * Méthode permettant de créer de fausse coordonnées
 	 * 
@@ -122,7 +126,7 @@ public class LocationService extends Service {
 		try
 		{
 			// Permet de compléter la location avec tous les champs obligatoires
-			Method locationJellyBeanFixMethod = Location.class.getMethod("makeComplete");
+			java.lang.reflect.Method locationJellyBeanFixMethod = Location.class.getMethod("makeComplete");
 			if (locationJellyBeanFixMethod != null) {
 				locationJellyBeanFixMethod.invoke(newLocation);
 			}
@@ -140,6 +144,6 @@ public class LocationService extends Service {
 		lm.setTestProviderLocation(LocationManager.GPS_PROVIDER, newLocation);  
 
 	}
-	
-	
+
+
 } 
