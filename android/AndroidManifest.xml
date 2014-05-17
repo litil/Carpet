@@ -34,15 +34,16 @@
             android:name="com.matelli.carpet.activities.ConducteurActivity"
             android:label="@string/title_activity_conducteur"
             android:screenOrientation="portrait"
-   			android:configChanges="orientation|keyboardHidden" >
+   			android:configChanges="orientation|keyboardHidden">
         </activity>
         <activity
             android:name="com.matelli.carpet.activities.EnfantActivity"
             android:label="@string/title_activity_enfant" 
             android:screenOrientation="landscape"
-   			android:configChanges="orientation|keyboardHidden">
+   			android:configChanges="orientation|keyboardHidden"
+    		android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         
-            </application>
+	</application>
 
 </manifest>

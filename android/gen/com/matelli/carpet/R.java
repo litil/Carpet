@@ -38,6 +38,7 @@ public final class R {
         public static final int settings=0x7f02000b;
         public static final int splashscreen=0x7f02000c;
         public static final int trajets=0x7f02000d;
+        public static final int user_pic=0x7f02000e;
     }
     public static final class id {
         public static final int action_settings=0x7f090009;
