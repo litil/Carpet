@@ -9,8 +9,13 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
+import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
+import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.debug.Debug;
 
 /**
  * Created by fl0 on 17/05/2014.
@@ -23,6 +28,9 @@ public class ResourcesManager
 
     private static final ResourcesManager INSTANCE = new ResourcesManager();
 
+    private static final int IMAGE_RES_WIDTH = 1920;
+    private static final int IMAGE_RES_HEIGHT = 1080;
+
     public Engine engine;
     public EnfantActivity activity;
     public Camera camera;
@@ -34,6 +42,17 @@ public class ResourcesManager
 
     public ITextureRegion splash_region;
     private BitmapTextureAtlas splashTextureAtlas;
+
+
+
+    // Main game
+    public ITextureRegion game_background_region;
+    public ITextureRegion game_pet_region;
+    public ITextureRegion game_car_region;
+
+    private BuildableBitmapTextureAtlas gameTextureAtlas;
+
+
 
     //---------------------------------------------
     // CLASS LOGIC
@@ -64,7 +83,22 @@ public class ResourcesManager
 
     private void loadGameGraphics()
     {
+        BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/game/");
+        gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
+        game_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Fond.png");
 
+        //TODO: load dog & car
+
+
+        try
+        {
+            this.gameTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
+            this.gameTextureAtlas.load();
+        }
+        catch (final ITextureAtlasBuilder.TextureAtlasBuilderException e)
+        {
+            Debug.e(e);
+        }
     }
 
     private void loadGameFonts()
@@ -80,11 +114,14 @@ public class ResourcesManager
     public void loadSplashScreen()
     {
         BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-        splashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
+
+        splashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
 
 
 
         splash_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(splashTextureAtlas, activity, "splash.png", 0, 0);
+
+        Log.d(splash_region.getWidth() + "" + splash_region.getHeight(), "florianburel");
         splashTextureAtlas.load();
     }
 

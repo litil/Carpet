@@ -98,6 +98,14 @@ public class SceneManager
         pOnCreateSceneCallback.onCreateSceneFinished(splashScene);
     }
 
+    public void createGameScene()
+    {
+        ResourcesManager.getInstance().loadGameResources();
+        menuScene = new GameScene();
+        setScene(menuScene);
+        disposeSplashScene();
+    }
+
     private void disposeSplashScene()
     {
         ResourcesManager.getInstance().unloadSplashScreen();

@@ -45,7 +45,7 @@ public class EnfantActivity extends BaseGameActivity {
     {
 
 
-        camera = new Camera(0, 0, 800, 480);
+        camera = new Camera(0, 0, SCREEN_RESOLUTION_WIDTH, SCREEN_RESOLUTION_HEIGHT);
         EngineOptions engineOptions = new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(SCREEN_RESOLUTION_WIDTH, SCREEN_RESOLUTION_HEIGHT), this.camera);
         engineOptions.getAudioOptions().setNeedsMusic(true).setNeedsSound(true);
         engineOptions.setWakeLockOptions(WakeLockOptions.SCREEN_ON);
@@ -79,10 +79,8 @@ public class EnfantActivity extends BaseGameActivity {
             public void onTimePassed(final TimerHandler pTimerHandler)
             {
                 mEngine.unregisterUpdateHandler(pTimerHandler);
-                // load menu resources, create menu scene
-                // set menu scene using scene manager
-                // disposeSplashScene();
-                // READ NEXT ARTICLE FOR THIS PART.
+
+                SceneManager.getInstance().createGameScene();
             }
         }));
         pOnPopulateSceneCallback.onPopulateSceneFinished();
