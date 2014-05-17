@@ -1,8 +1,8 @@
 package com.matelli.carpet.activities;
 
-import android.app.Activity;
+import roboguice.activity.RoboActivity;
 
-public class CarpetActivity extends Activity {
+public class CarpetActivity extends RoboActivity {
 
 
 	
