@@ -33,31 +33,32 @@ public class WelcomeActivity extends RoboActivity {
 	private double latitude = 0f;
 	private LocationManager lm;
 	
-//	private final LocationListener locationListener = new LocationListener() {
-//	    public void onLocationChanged(Location location) {
-//	        longitude = location.getLongitude();
-//	        latitude = location.getLatitude();
-//	        Log.v("TEST", "Longitude : " + longitude + " - Latitude : " + latitude);
-//	    }
-//
-//		@Override
-//		public void onProviderDisabled(String provider) {
-//			// TODO Auto-generated method stub
-//			
-//		}
-//
-//		@Override
-//		public void onProviderEnabled(String provider) {
-//			// TODO Auto-generated method stub
-//			
-//		}
-//
-//		@Override
-//		public void onStatusChanged(String provider, int status, Bundle extras) {
-//			// TODO Auto-generated method stub
-//			
-//		}
-//	};
+	private final LocationListener locationListener = new LocationListener() {
+	    public void onLocationChanged(Location location) {
+	        longitude = location.getLongitude();
+	        latitude = location.getLatitude();
+	        Log.v("TEST", "Longitude : " + longitude + " - Latitude : " + latitude);
+	        Toast.makeText(currentActivity, ("Super Longitude : " + longitude + " - Latitude : " + latitude + " - Speed : " + location.getSpeed()), Toast.LENGTH_LONG).show();
+	    }
+
+		@Override
+		public void onProviderDisabled(String provider) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onProviderEnabled(String provider) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onStatusChanged(String provider, int status, Bundle extras) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 
 	
     @Override
@@ -90,7 +91,7 @@ public class WelcomeActivity extends RoboActivity {
             	 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                  double longitud = location.getLongitude();
                  double latitud = location.getLatitude();
-                 Toast.makeText(currentActivity, ("Longitude : " + longitud + " - Latitude : " + latitud), Toast.LENGTH_LONG).show();
+                 Toast.makeText(currentActivity, ("Longitude : " + longitud + " - Latitude : " + latitud + " - Speed (m/s) : " + location.getSpeed()), Toast.LENGTH_LONG).show();
             }
         });
         
@@ -99,7 +100,7 @@ public class WelcomeActivity extends RoboActivity {
         
         lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
 
-//        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locationListener);
     }
 
     
