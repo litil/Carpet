@@ -32,5 +32,8 @@
     
     <!-- CONDUCTEUR -->
     <string name="welcome_conducteur">Welcome conducteur!</string>
+    
+    <!-- SERVICE -->
+    <string name="service_name">Location Service</string>
 
 </resources>

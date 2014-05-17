@@ -77,6 +77,9 @@ public final class R {
         public static final int goto_geo=0x7f05000d;
         public static final int hello_world=0x7f050002;
         public static final int login_with_facebook=0x7f05000a;
+        /**  SERVICE 
+         */
+        public static final int service_name=0x7f050010;
         public static final int title_activity_conducteur=0x7f050003;
         public static final int title_activity_enfant=0x7f050004;
         /**  WELCOME 
