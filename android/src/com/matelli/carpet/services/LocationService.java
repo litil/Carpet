@@ -26,6 +26,7 @@ public class LocationService extends Service {
 	private LocationManager lm = null;
 
 	private List<Coordonnees> coordonnees = null;
+	private static int nbGoodCheck = 0;
 
 
 	@Override
@@ -77,10 +78,20 @@ public class LocationService extends Service {
 			// TODO détecter depassement de vitesse et broadcaster un message
 			if(location.getSpeed() > 50) {
 				// send broadcast
+				nbGoodCheck = 0;
 				Intent intent = new Intent();
 				intent.setAction(CarpetConstantes.BROADCAST_VITESSE_LIMITE_ATTEINTE);
 				sendBroadcast(intent);
-
+			}
+			else {
+				nbGoodCheck++;
+				if(nbGoodCheck%5==0)
+				{
+					Intent intent = new Intent();
+					intent.putExtra(CarpetConstantes.BROADCAST_EXTRA_SCORE, nbGoodCheck*100);
+					intent.setAction(CarpetConstantes.BROADCAST_BONNE_CONDUITE);
+					sendBroadcast(intent);
+				}
 			}
 		}
 

@@ -1,8 +1,6 @@
 package com.matelli.carpet.activities;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.LimitedFPSEngine;
@@ -24,18 +22,12 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.android.volley.Request.Method;
-import com.android.volley.Response.Listener;
-import com.android.volley.VolleyError;
-import com.google.gson.Gson;
+
 import com.matelli.carpet.application.CarpetApplication;
 import com.matelli.carpet.config.CarpetConstantes;
 import com.matelli.carpet.game.ResourcesManager;
 import com.matelli.carpet.game.Scene.SceneManager;
-import com.matelli.carpet.models.EventDTO;
-import com.matelli.carpet.models.User;
-import com.matelli.carpet.network.VolleyAuthStringRequest;
-import com.matelli.carpet.network.VolleySharedInstance;
+
 
 public class EnfantActivity extends BaseGameActivity {
 	private static final String TAG = "EnfantActivity";
@@ -55,9 +47,40 @@ public class EnfantActivity extends BaseGameActivity {
 		public void onReceive(Context context, Intent intent) {
 			// update Chien  view 
 			
-			
-			// send it to web services
 			Log.d(TAG, "sdljkfdsjhf jksdhfjksdhfjksdhjk fdhskfhdjkshfkjsdhfjk sdf s");
+			
+		}
+    };
+
+    IntentFilter filterBonneConduite = new IntentFilter(CarpetConstantes.BROADCAST_BONNE_CONDUITE);
+    BroadcastReceiver bonneConduiteReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// update Score  view 
+			
+			Log.d(TAG, "NEW POINTS = " + intent.getIntExtra(CarpetConstantes.BROADCAST_EXTRA_SCORE, 0));
+			
+		}
+    };
+    
+    IntentFilter filterTraffic = new IntentFilter(CarpetConstantes.BROADCAST_TRAFFIC);
+    BroadcastReceiver trafficReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// update Score  view 
+			
+			Log.d(TAG, "TRAFFIC");
+			
+		}
+    };
+    
+    IntentFilter filterRepos = new IntentFilter(CarpetConstantes.BROADCAST_REPOS);
+    BroadcastReceiver reposReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// warn repos
+			
+			Log.d(TAG, "REPOS OBLIGATOIRE");
 			
 		}
     };
