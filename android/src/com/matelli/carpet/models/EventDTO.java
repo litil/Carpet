@@ -10,6 +10,7 @@ import java.util.HashMap;
  */
 public class EventDTO {
 	
+	public int pet_id;
 	public String type;
 	public HashMap<String, String> params;
 
@@ -60,5 +61,11 @@ public class EventDTO {
 	}
 	public void setParams(HashMap<String, String> params) {
 		this.params = params;
+	}
+	public int getPet_id() {
+		return pet_id;
+	}
+	public void setPet_id(int pet_id) {
+		this.pet_id = pet_id;
 	}
 }
