@@ -3,6 +3,7 @@ package com.matelli.carpet.activities;
 import com.matelli.carpet.R;
 import com.matelli.carpet.R.layout;
 import com.matelli.carpet.R.menu;
+import com.matelli.carpet.game.GameManager;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -35,6 +36,8 @@ public class EnfantActivity extends BaseGameActivity {
 
     @Override
     public void onLoadResources() {
+        GameManager.prepareManager(mEngine, this, camera);
+        GameManager manager = GameManager.getInstance();
 
     }
 
