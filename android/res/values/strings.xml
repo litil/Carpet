@@ -7,12 +7,23 @@
     <string name="title_activity_conducteur">ConducteurActivity</string>
     <string name="title_activity_enfant">EnfantActivity</string>
     
-    
+    <string-array name="menu_entry">
+        <item>Dashboard</item>
+        <item>Settings</item>
+        <item>Trajets</item>
+        <item>Soon</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
     
     <!-- WELCOME -->
     <string name="welcome_carpet">Welcome Carpet!</string>
+    <string name="login_with_facebook">Login with Facebook</string>
     <string name="goto_enfant">Vers enfant</string>
     <string name="goto_conducteur">Vers conducteur</string>
+    <string name="goto_geo">Geo</string>
     
     
     <!-- ENFANT -->
@@ -21,5 +32,8 @@
     
     <!-- CONDUCTEUR -->
     <string name="welcome_conducteur">Welcome conducteur!</string>
+    
+    <!-- SERVICE -->
+    <string name="service_name">Location Service</string>
 
 </resources>
