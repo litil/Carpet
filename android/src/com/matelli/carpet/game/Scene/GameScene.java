@@ -87,7 +87,7 @@ public class GameScene extends BaseScene
 
         // this.dogSprite = new Sprite(0,0, resourcesManager.game_pet_region, vbom);
 
-        AnimatedSprite sprite = new AnimatedSprite(0, 0, resourcesManager.game_pet_region, vbom);
+        AnimatedSprite sprite = new AnimatedSprite(215, 633, resourcesManager.game_pet_region, vbom);
 
 
 
