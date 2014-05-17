@@ -1,21 +1,9 @@
 package com.matelli.carpet.activities;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-
-import com.matelli.carpet.R;
-import com.matelli.carpet.R.id;
-import com.matelli.carpet.R.layout;
-import com.matelli.carpet.R.menu;
-import com.matelli.carpet.services.LocationService;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -23,21 +11,18 @@ import android.widget.RelativeLayout;
 
 import com.matelli.carpet.R;
 import com.matelli.carpet.application.CarpetApplication;
+import com.matelli.carpet.services.LocationService;
 import com.matelli.carpet.utils.FakeDataHelper;
 
 public class WelcomeActivity extends RoboActivity {
 	private static final String TAG = "WelcomeActivity";
-
-	@InjectView(R.id.button_goto_enfant)		Button gotoEnfant; 
-	@InjectView(R.id.button_goto_conducteur)	Button gotoConducteur; 
 
 	private Activity currentActivity;
 
 	@InjectView(R.id.button_loggin)		RelativeLayout buttonLoggin; 
 
 	private CarpetApplication carpetApp;
-	private Activity currentActivity;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

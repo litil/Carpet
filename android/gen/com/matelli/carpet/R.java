@@ -75,13 +75,10 @@ public final class R {
         public static final int goto_enfant=0x7f05000b;
         public static final int goto_geo=0x7f05000d;
         public static final int hello_world=0x7f050002;
-<<<<<<< HEAD
+        public static final int login_with_facebook=0x7f05000a;
         /**  SERVICE 
          */
-        public static final int service_name=0x7f05000f;
-=======
-        public static final int login_with_facebook=0x7f05000a;
->>>>>>> 72c3a228ae7a4a34834f99fa420451989436faac
+        public static final int service_name=0x7f050010;
         public static final int title_activity_conducteur=0x7f050003;
         public static final int title_activity_enfant=0x7f050004;
         /**  WELCOME 
