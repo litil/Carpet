@@ -6,6 +6,7 @@ import com.matelli.carpet.models.User;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.camera.hud.HUD;
+import org.andengine.entity.sprite.AnimatedSprite;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
@@ -72,6 +73,7 @@ public class GameScene extends BaseScene
 
         this.user = User.createFakeUser();
 
+        // Ajoute le bb
         attachChild(new Sprite(0, 0, resourcesManager.game_background_region, vbom)
         {
             @Override
@@ -83,9 +85,17 @@ public class GameScene extends BaseScene
         });
 
 
-        this.dogSprite = new Sprite(0,0, resourcesManager.game_pet_region, vbom);
+        // this.dogSprite = new Sprite(0,0, resourcesManager.game_pet_region, vbom);
 
-        attachChild(this.dogSprite);
+        AnimatedSprite sprite = new AnimatedSprite(0, 0, resourcesManager.game_pet_region, vbom);
+
+
+
+        attachChild(sprite);
+
+        sprite.animate(100);
+
+        this.dogSprite = sprite;
 
 
 

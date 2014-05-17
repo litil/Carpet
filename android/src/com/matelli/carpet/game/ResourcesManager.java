@@ -18,6 +18,7 @@ import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSourc
 import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
 import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 /**
@@ -53,7 +54,7 @@ public class ResourcesManager
     public ITextureRegion game_background_region;
 
     private  BuildableBitmapTextureAtlas game_pet_atlas;
-    public ITextureRegion game_pet_region;
+    public TiledTextureRegion game_pet_region;
 
     //public ITextureRegion game_car_region;
 
@@ -80,8 +81,8 @@ public class ResourcesManager
         this.gameTextureAtlas.load();
 
 
-        game_pet_atlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
-        game_pet_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(game_pet_atlas, activity, "Dog.png");
+        game_pet_atlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1110, 600, TextureOptions.BILINEAR);
+        game_pet_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(game_pet_atlas, activity, "sprite.png", 5, 2);
         this.game_pet_atlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
         this.game_pet_atlas.load();
 
