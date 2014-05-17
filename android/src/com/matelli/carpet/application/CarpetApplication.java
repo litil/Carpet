@@ -6,6 +6,16 @@ import com.matelli.carpet.models.User;
 
 public class CarpetApplication extends Application {
 
-	User user = null;
+	private User user = null;
+	
+	
+	// GETTER / SETTER
+
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 }

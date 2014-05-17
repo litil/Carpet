@@ -12,12 +12,15 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.matelli.carpet.R;
+import com.matelli.carpet.application.CarpetApplication;
+import com.matelli.carpet.utils.FakeDataHelper;
 
 public class WelcomeActivity extends RoboActivity {
 	private static final String TAG = "WelcomeActivity";
 
-	@InjectView(R.id.button_goto_enfant)		RelativeLayout gotoEnfant; 
+	@InjectView(R.id.button_loggin)		RelativeLayout buttonLoggin; 
 
+	private CarpetApplication carpetApp;
 	private Activity currentActivity;
 
 	private double longitude = 0f;
@@ -56,11 +59,16 @@ public class WelcomeActivity extends RoboActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_welcome);
 		currentActivity = this;
+		carpetApp = (CarpetApplication) this.getApplication();
 
 		// got to EnfantActivity
-		gotoEnfant.setOnClickListener(new View.OnClickListener() {
+		buttonLoggin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				// TODO request facebook
+				// for now we build a fake User
+				carpetApp.setUser(FakeDataHelper.createFakeUser());
+				
 				Intent intent = new Intent(currentActivity, EnfantActivity.class);
 				currentActivity.startActivity(intent);
 			}

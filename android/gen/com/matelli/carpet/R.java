@@ -39,7 +39,7 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f090007;
-        public static final int button_goto_enfant=0x7f090003;
+        public static final int button_loggin=0x7f090003;
         public static final int content_frame=0x7f090001;
         public static final int drawer_layout=0x7f090000;
         public static final int facebook_icon=0x7f090004;
