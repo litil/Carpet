@@ -56,6 +56,46 @@ public class LocationService extends Service {
 					}
 				}
 			}).start();
+
+			// On lance le thread qui va changer les coordonnées géographiques
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					while(true) {
+						try {
+							Thread.sleep(CarpetConstantes.TIME_CHECK_TRAFFIC);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+						Intent intent = new Intent();
+						intent.setAction(CarpetConstantes.BROADCAST_TRAFFIC);
+						sendBroadcast(intent);
+					}
+				}
+			}).start();
+
+			// On lance le thread qui va changer les coordonnées géographiques
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					while(true) {
+						try {
+							Log.d(TAG, "1111111");
+							Thread.sleep(CarpetConstantes.TIME_CHECK_REPOS);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+						Log.d(TAG, "2222222222");
+						Intent intent = new Intent();
+						intent.setAction(CarpetConstantes.BROADCAST_REPOS);
+						sendBroadcast(intent);
+						Log.d(TAG, "3333333333");
+					}
+				}
+			}).start();
+
 		}
 
 		return Service.START_NOT_STICKY;
@@ -78,15 +118,15 @@ public class LocationService extends Service {
 			// TODO détecter depassement de vitesse et broadcaster un message
 			if(location.getSpeed() > 50) {
 				// send broadcast
+				Log.e(TAG, "MAUVAISE VITESSE");
 				nbGoodCheck = 0;
 				Intent intent = new Intent();
 				intent.setAction(CarpetConstantes.BROADCAST_VITESSE_LIMITE_ATTEINTE);
 				sendBroadcast(intent);
-			}
-			else {
+			} else {
 				nbGoodCheck++;
-				if(nbGoodCheck%5==0)
-				{
+				Log.e(TAG, "BONNE VITTESSE " + nbGoodCheck);
+				if(nbGoodCheck%5==0) {
 					Intent intent = new Intent();
 					intent.putExtra(CarpetConstantes.BROADCAST_EXTRA_SCORE, nbGoodCheck*100);
 					intent.setAction(CarpetConstantes.BROADCAST_BONNE_CONDUITE);
