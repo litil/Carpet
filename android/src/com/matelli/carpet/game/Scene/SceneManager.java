@@ -1,5 +1,7 @@
 package com.matelli.carpet.game.Scene;
 
+import android.util.Log;
+
 import com.matelli.carpet.game.ResourcesManager;
 import com.matelli.carpet.models.User;
 
@@ -31,7 +33,6 @@ public class SceneManager
     private BaseScene currentScene;
 
     private Engine engine = ResourcesManager.getInstance().engine;
-    private User user;
 
     public enum SceneType
     {
@@ -98,23 +99,30 @@ public class SceneManager
         pOnCreateSceneCallback.onCreateSceneFinished(splashScene);
     }
 
-    public void createGameScene()
+    public void createGameScene(User user)
     {
+
 
         try {
             ResourcesManager.getInstance().loadRessources();
-            gameScene = new GameScene(this.user);
+
+            GameScene scene = new GameScene();
+
+            gameScene = scene;
+
             setScene(gameScene);
             disposeSplashScene();
         } catch (ITextureAtlasBuilder.TextureAtlasBuilderException e) {
             e.printStackTrace();
+            Log.d("exception", "florianburel");
+
         }
 
     }
 
     private void disposeSplashScene()
     {
-        ResourcesManager.getInstance().unloadSplashScreen();
+         ResourcesManager.getInstance().unloadSplashScreen();
         splashScene.disposeScene();
         splashScene = null;
     }

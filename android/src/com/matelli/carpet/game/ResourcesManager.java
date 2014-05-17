@@ -69,23 +69,30 @@ public class ResourcesManager
 
     public void loadRessources() throws ITextureAtlasBuilder.TextureAtlasBuilderException
     {
+
+
         BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/game/");
+
 
         gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
         game_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Fond.png");
         this.gameTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
         this.gameTextureAtlas.load();
 
+
         game_pet_atlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
         game_pet_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(game_pet_atlas, activity, "Dog.png");
         this.game_pet_atlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
         this.game_pet_atlas.load();
 
+
         FontFactory.setAssetBasePath("font/");
         final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 
-        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "Gotham-Bold.ttf", 50, true, Color.WHITE, 2, Color.BLACK);
+        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "Gotham-Bold.otf", 50, true, Color.WHITE, 2, Color.BLACK);
         font.load();
+
+
 
 
 

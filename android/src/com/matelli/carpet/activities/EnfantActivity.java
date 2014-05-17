@@ -28,10 +28,12 @@ import com.android.volley.Request.Method;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
+import com.matelli.carpet.application.CarpetApplication;
 import com.matelli.carpet.config.CarpetConstantes;
 import com.matelli.carpet.game.ResourcesManager;
 import com.matelli.carpet.game.Scene.SceneManager;
 import com.matelli.carpet.models.EventDTO;
+import com.matelli.carpet.models.User;
 import com.matelli.carpet.network.VolleyAuthStringRequest;
 import com.matelli.carpet.network.VolleySharedInstance;
 
@@ -81,7 +83,6 @@ public class EnfantActivity extends BaseGameActivity {
    @Override
     public Engine onCreateEngine(EngineOptions pEngineOptions)
     {
-        Log.d("I'm here", "florianburel");
         return new LimitedFPSEngine(pEngineOptions, 60);
     }
 
@@ -118,13 +119,25 @@ public class EnfantActivity extends BaseGameActivity {
     public void onPopulateScene(Scene pScene, OnPopulateSceneCallback pOnPopulateSceneCallback) throws IOException
     {
 
+
+
+
         mEngine.registerUpdateHandler(new TimerHandler(2f, new ITimerCallback()
         {
+
+
             public void onTimePassed(final TimerHandler pTimerHandler)
             {
+
+
+                Log.d("ressources loaded", "florianburel");
+
+
                 mEngine.unregisterUpdateHandler(pTimerHandler);
 
-                SceneManager.getInstance().createGameScene();
+
+
+                SceneManager.getInstance().createGameScene(((CarpetApplication)getApplication()).getUser());
             }
         }));
         pOnPopulateSceneCallback.onPopulateSceneFinished();

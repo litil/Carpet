@@ -1,5 +1,7 @@
 package com.matelli.carpet.game.Scene;
 
+import android.util.Log;
+
 import com.matelli.carpet.models.User;
 
 import org.andengine.engine.camera.Camera;
@@ -16,14 +18,11 @@ import org.andengine.util.HorizontalAlign;
 public class GameScene extends BaseScene
 {
     private HUD gameHUD;
-    private User user;
     private Text scoreText;
     private Sprite dogSprite;
 
-    GameScene(User user)
-    {
-        this.user = user;
-    }
+
+    private User user;
 
 
     private void createHUD()
@@ -31,6 +30,7 @@ public class GameScene extends BaseScene
 
         gameHUD = new HUD();
 
+        Log.d("setting the score", "florianburel");
         // CREATE SCORE TEXT
         scoreText = new Text(20, 420, resourcesManager.font, "Score: 0123456789", new TextOptions(HorizontalAlign.LEFT), vbom);
      //   scoreText.setAnchorCenter(0, 0);
@@ -44,6 +44,9 @@ public class GameScene extends BaseScene
     @Override
     public void createScene() {
         createBackground();
+
+
+
     }
 
     @Override
@@ -65,6 +68,10 @@ public class GameScene extends BaseScene
     private void createBackground()
     {
         // Attache the background
+
+
+        this.user = User.createFakeUser();
+
         attachChild(new Sprite(0, 0, resourcesManager.game_background_region, vbom)
         {
             @Override
@@ -75,9 +82,18 @@ public class GameScene extends BaseScene
             }
         });
 
+
         this.dogSprite = new Sprite(0,0, resourcesManager.game_pet_region, vbom);
+
         attachChild(this.dogSprite);
 
 
+
+
+
+
+        createHUD();
+        Log.d("background created", "florianburel");
     }
+
 }
