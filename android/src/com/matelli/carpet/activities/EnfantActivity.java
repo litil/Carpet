@@ -43,8 +43,7 @@ public class EnfantActivity extends BaseGameActivity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// update Chien  view 
-			
-			Log.d(TAG, "sdljkfdsjhf jksdhfjksdhfjksdhjk fdhskfhdjkshfkjsdhfjk sdf s");
+			Log.d(TAG, "VITESSE LIMITE ATTEINTE");
 			
 		}
     };
@@ -89,7 +88,10 @@ public class EnfantActivity extends BaseGameActivity {
         super.onCreate(savedInstanceState);
         currentActivity = this;
         
-        
+
+        registerReceiver(reposReceiver, filterRepos);
+        registerReceiver(trafficReceiver, filterTraffic);
+        registerReceiver(bonneConduiteReceiver, filterBonneConduite);
         registerReceiver(speedLimitReachedReceiver, filterSpeedLimitReachedReceiver);
     }
     

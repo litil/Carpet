@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import com.matelli.carpet.R;
 import com.matelli.carpet.application.CarpetApplication;
 import com.matelli.carpet.services.LocationService;
+import com.matelli.carpet.services.ReposService;
+import com.matelli.carpet.services.TrafficService;
 import com.matelli.carpet.utils.FakeDataHelper;
 
 public class WelcomeActivity extends RoboActivity {
@@ -45,8 +47,14 @@ public class WelcomeActivity extends RoboActivity {
 		});
 
 
-		Intent i= new Intent(this, LocationService.class);
-		this.startService(i); 
+		Intent i = new Intent(this, LocationService.class);
+		//this.startService(i); 
+		
+		Intent iRepos = new Intent(this, ReposService.class);
+		this.startService(iRepos); 
+		
+		Intent iTraffic = new Intent(this, TrafficService.class);
+		//this.startService(iTraffic); 
 }
 
 	@Override

@@ -16,8 +16,8 @@ public class CarpetConstantes {
 	
 	// TIMER
 	public static final int TIME_CHECK_VITESSE = 1000;
-	public static final int TIME_CHECK_TRAFFIC = 60000*2;
-	public static final int TIME_CHECK_REPOS = 60000*3;
+	public static final int TIME_CHECK_TRAFFIC = 2000;
+	public static final int TIME_CHECK_REPOS = 3000;
 	
 	
 	// BROADCAST
