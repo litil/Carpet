@@ -20,6 +20,7 @@
     
     <!-- WELCOME -->
     <string name="welcome_carpet">Welcome Carpet!</string>
+    <string name="login_with_facebook">Login with Facebook</string>
     <string name="goto_enfant">Vers enfant</string>
     <string name="goto_conducteur">Vers conducteur</string>
     <string name="goto_geo">Geo</string>

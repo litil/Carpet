@@ -24,7 +24,7 @@ public class FakeDataHelper {
 	 * 
 	 * @return User
 	 */
-	public User createFakeUser(){
+	public static User createFakeUser(){
 		User user = new User();
 		
 		user.setLogin(USER_LOGIN);
@@ -44,7 +44,7 @@ public class FakeDataHelper {
 	 * 
 	 * @return Voiture
 	 */
-	public Voiture createFakeVoiture(){
+	public static Voiture createFakeVoiture(){
 		Voiture voiture = new Voiture();
 		
 		voiture.setConsommation(VOITURE_CONSOMMATION);
@@ -61,7 +61,7 @@ public class FakeDataHelper {
 	 * 
 	 * @return Chien
 	 */
-	public Chien createFakeChien(){
+	public static Chien createFakeChien(){
 		Chien chien = new Chien();
 		
 		chien.setHumeur(CarpetConstantes.HUMEUR_OK);
