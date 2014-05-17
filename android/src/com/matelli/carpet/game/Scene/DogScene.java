@@ -6,6 +6,8 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.util.GLState;
 
+import com.matelli.carpet.models.Chien;
+
 /**
  * Created by fl0 on 17/05/2014.
  */
@@ -20,7 +22,7 @@ public class DogScene extends BaseScene {
 
     @Override
     public void createScene() {
-        splash = new Sprite(0, 0, resourcesManager.splash_region, vbom)
+    	dogSprite = new Sprite(0, 0, resourcesManager.splash_region, vbom)
         {
             @Override
             protected void preDraw(GLState pGLState, Camera pCamera)
@@ -30,9 +32,9 @@ public class DogScene extends BaseScene {
             }
         };
 
-        splash.setScale(1f);
-        splash.setPosition(0, 0);
-        attachChild(splash);
+        dogSprite.setScale(1f);
+        dogSprite.setPosition(0, 0);
+        attachChild(dogSprite);
     }
 
     @Override
