@@ -19,7 +19,7 @@ public class User {
 	private String password;
 	private Chien chien;
 	private Voiture voiture;
-	private Double score;
+	private int score;
 	
 	
 	/**
@@ -27,6 +27,16 @@ public class User {
 	 */
 	public User() {
 		
+	}
+	
+	
+	
+	public User createFakeUser(){
+		User user = new User();
+		
+		user.setLogin("John Doe");
+		
+		return user;
 	}
 	
 	
@@ -56,10 +66,10 @@ public class User {
 	public void setVoiture(Voiture voiture) {
 		this.voiture = voiture;
 	}
-	public Double getScore() {
+	public int getScore() {
 		return score;
 	}
-	public void setScore(Double score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 	
