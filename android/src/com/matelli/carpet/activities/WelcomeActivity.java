@@ -69,7 +69,7 @@ public class WelcomeActivity extends RoboActivity {
 				// for now we build a fake User
 				carpetApp.setUser(FakeDataHelper.createFakeUser());
 				
-				Intent intent = new Intent(currentActivity, EnfantActivity.class);
+				Intent intent = new Intent(currentActivity, ConducteurActivity.class);
 				currentActivity.startActivity(intent);
 			}
 		});
