@@ -8,19 +8,44 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class EnfantActivity extends Activity {
+import org.anddev.andengine.engine.Engine;
+import org.anddev.andengine.engine.camera.Camera;
+import org.anddev.andengine.engine.options.EngineOptions;
+import org.anddev.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
+import org.anddev.andengine.entity.scene.Scene;
+import org.anddev.andengine.ui.activity.BaseGameActivity;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_enfant);
-	}
+public class EnfantActivity extends BaseGameActivity {
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.enfant, menu);
-		return true;
-	}
 
+    private Camera camera;
+    private static final int CAMERA_LARGEUR = 480;
+    private static final int CAMERA_HAUTEUR = 320;
+
+    @Override
+    public Engine onLoadEngine() {
+
+        camera = new Camera(0, 0, CAMERA_LARGEUR, CAMERA_HAUTEUR);
+        return new Engine(new EngineOptions(true,
+                EngineOptions.ScreenOrientation.LANDSCAPE,
+                new RatioResolutionPolicy(CAMERA_LARGEUR, CAMERA_HAUTEUR),
+                camera));
+
+    }
+
+    @Override
+    public void onLoadResources() {
+
+    }
+
+    @Override
+    public Scene onLoadScene() {
+        final Scene scene = new Scene();
+        return scene;
+    }
+
+    @Override
+    public void onLoadComplete() {
+
+    }
 }

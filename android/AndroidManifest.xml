@@ -8,6 +8,8 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
     <application
         android:name="com.matelli.carpet.application.CarpetApplication"
         android:allowBackup="true"
