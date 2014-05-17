@@ -10,19 +10,20 @@ import java.util.HashMap;
  */
 public class EventDTO {
 	
+	public int pet_id;
 	public String type;
 	public HashMap<String, String> params;
 
 	
 	// limite de vitesse
-	private String VITESSE_LIMITE_ATTEINTE = "VITESSE_LIMITE_ATTEINTE";
-	private String VITESSE_LIMITE_ATTEINTE_OBJECTIF = "VITESSE_LIMITE_ATTEINTE_OBJECTIF";
-	private String VITESSE_LIMITE_ATTEINTE_VALEUR = "VITESSE_LIMITE_ATTEINTE_VALEUR";
+	public static String VITESSE_LIMITE_ATTEINTE = "VITESSE_LIMITE_ATTEINTE";
+	public static String VITESSE_LIMITE_ATTEINTE_OBJECTIF = "VITESSE_LIMITE_ATTEINTE_OBJECTIF";
+	public static String VITESSE_LIMITE_ATTEINTE_VALEUR = "VITESSE_LIMITE_ATTEINTE_VALEUR";
 	
 	// temps de trajet trop long
-	private String TEMPS_CONDUITE = "TEMPS_CONDUITE";
-	private String TEMPS_CONDUITE_OBJECTIF = "TEMPS_CONDUITE_OBJECTIF";
-	private String TEMPS_CONDUITE_VALEUR = "TEMPS_CONDUITE_VALEUR";
+	public static String TEMPS_CONDUITE = "TEMPS_CONDUITE";
+	public static String TEMPS_CONDUITE_OBJECTIF = "TEMPS_CONDUITE_OBJECTIF";
+	public static String TEMPS_CONDUITE_VALEUR = "TEMPS_CONDUITE_VALEUR";
 	
 	
 	
@@ -60,5 +61,11 @@ public class EventDTO {
 	}
 	public void setParams(HashMap<String, String> params) {
 		this.params = params;
+	}
+	public int getPet_id() {
+		return pet_id;
+	}
+	public void setPet_id(int pet_id) {
+		this.pet_id = pet_id;
 	}
 }
