@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,26 +6,34 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     android:background="@drawable/splashscreen"
     tools:context=".WelcomeActivity" >
     
-    <Button 
+    
+    <RelativeLayout 
         android:id="@+id/button_goto_enfant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/goto_enfant" />
-    
-    <Button 
-        android:id="@+id/button_goto_conducteur"
+        android:layout_alignParentBottom="true" 
+        android:layout_centerHorizontal="true" >
+        
+       <ImageView 
+        android:id="@+id/facebook_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+		android:src="@drawable/facebook_icon"/> 
+		
+       <TextView 
+       	android:id="@+id/login_with_facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/goto_conducteur" />
+       	android:text="@string/login_with_facebook" 
+       	android:textColor="@android:color/white"
+       	android:layout_toRightOf="@id/facebook_icon"
+       	android:layout_centerVertical="true"
+       	android:textSize="24sp"
+       	android:textStyle="bold"/>
+        
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/button_geo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/goto_geo" />
-
-</LinearLayout>
+</RelativeLayout>
