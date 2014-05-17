@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        
+        <service id="sonata.admin.pet" class="Carpet\Bundle\AdminBundle\Admin\PetAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Pet"/>
+            <argument />
+            <argument>Carpet\Bundle\PetBundle\Entity\Pet</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>CarpetPetBundle</argument>
+            </call>
+        </service>
+        
+        <service id="sonata.admin.gadget" class="Carpet\Bundle\AdminBundle\Admin\GadgetAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Gadget"/>
+            <argument />
+            <argument>Carpet\Bundle\PetBundle\Entity\Gadget</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>CarpetPetBundle</argument>
+            </call>
+        </service>
+        
+        <service id="sonata.admin.possession" class="Carpet\Bundle\AdminBundle\Admin\PossessionAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Possession"/>
+            <argument />
+            <argument>Carpet\Bundle\PetBundle\Entity\Possession</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>CarpetPetBundle</argument>
+            </call>
+        </service>
+      
+      </services>
+</container>
