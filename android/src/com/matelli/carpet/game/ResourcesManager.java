@@ -81,8 +81,8 @@ public class ResourcesManager
         this.gameTextureAtlas.load();
 
 
-        game_pet_atlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1110, 600, TextureOptions.BILINEAR);
-        game_pet_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(game_pet_atlas, activity, "sprite.png", 5, 2);
+        game_pet_atlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1753, 754, TextureOptions.BILINEAR);
+        game_pet_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(game_pet_atlas, activity, "dog_Run.png", 3, 1);
         this.game_pet_atlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
         this.game_pet_atlas.load();
 
