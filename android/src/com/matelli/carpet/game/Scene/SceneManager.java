@@ -1,8 +1,10 @@
 package com.matelli.carpet.game.Scene;
 
 import com.matelli.carpet.game.ResourcesManager;
+import com.matelli.carpet.models.User;
 
 import org.andengine.engine.Engine;
+import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder;
 import org.andengine.ui.IGameInterface;
 
 /**
@@ -15,7 +17,6 @@ public class SceneManager
     //---------------------------------------------
 
     private BaseScene splashScene;
-    private BaseScene menuScene;
     private BaseScene gameScene;
     private BaseScene loadingScene;
 
@@ -30,6 +31,7 @@ public class SceneManager
     private BaseScene currentScene;
 
     private Engine engine = ResourcesManager.getInstance().engine;
+    private User user;
 
     public enum SceneType
     {
@@ -55,8 +57,6 @@ public class SceneManager
         switch (sceneType)
         {
             case SCENE_MENU:
-                setScene(menuScene);
-                break;
             case SCENE_GAME:
                 setScene(gameScene);
                 break;
@@ -100,10 +100,16 @@ public class SceneManager
 
     public void createGameScene()
     {
-        ResourcesManager.getInstance().loadGameResources();
-        menuScene = new GameScene();
-        setScene(menuScene);
-        disposeSplashScene();
+
+        try {
+            ResourcesManager.getInstance().loadRessources();
+            gameScene = new GameScene(this.user);
+            setScene(gameScene);
+            disposeSplashScene();
+        } catch (ITextureAtlasBuilder.TextureAtlasBuilderException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void disposeSplashScene()

@@ -1,11 +1,15 @@
 package com.matelli.carpet.game;
 
+import android.graphics.Color;
 import android.util.Log;
 
 import com.matelli.carpet.activities.EnfantActivity;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
+import org.andengine.opengl.font.Font;
+import org.andengine.opengl.font.FontFactory;
+import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
@@ -15,7 +19,6 @@ import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtla
 import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
-import org.andengine.util.debug.Debug;
 
 /**
  * Created by fl0 on 17/05/2014.
@@ -46,11 +49,16 @@ public class ResourcesManager
 
 
     // Main game
-    public ITextureRegion game_background_region;
-    public ITextureRegion game_pet_region;
-    public ITextureRegion game_car_region;
-
     private BuildableBitmapTextureAtlas gameTextureAtlas;
+    public ITextureRegion game_background_region;
+
+    private  BuildableBitmapTextureAtlas game_pet_atlas;
+    public ITextureRegion game_pet_region;
+
+    //public ITextureRegion game_car_region;
+
+    public Font font;
+
 
 
 
@@ -58,58 +66,31 @@ public class ResourcesManager
     // CLASS LOGIC
     //---------------------------------------------
 
-    public void loadMenuResources()
-    {
-        loadMenuGraphics();
-        loadMenuAudio();
-    }
 
-    public void loadGameResources()
-    {
-        loadGameGraphics();
-        loadGameFonts();
-        loadGameAudio();
-    }
-
-    private void loadMenuGraphics()
-    {
-
-    }
-
-    private void loadMenuAudio()
-    {
-
-    }
-
-    private void loadGameGraphics()
+    public void loadRessources() throws ITextureAtlasBuilder.TextureAtlasBuilderException
     {
         BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/game/");
+
         gameTextureAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
         game_background_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameTextureAtlas, activity, "Fond.png");
+        this.gameTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
+        this.gameTextureAtlas.load();
 
-        //TODO: load dog & car
+        game_pet_atlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), IMAGE_RES_WIDTH, IMAGE_RES_HEIGHT, TextureOptions.BILINEAR);
+        game_pet_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(game_pet_atlas, activity, "Dog.png");
+        this.game_pet_atlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
+        this.game_pet_atlas.load();
+
+        FontFactory.setAssetBasePath("font/");
+        final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+
+        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "Gotham-Bold.ttf", 50, true, Color.WHITE, 2, Color.BLACK);
+        font.load();
 
 
-        try
-        {
-            this.gameTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 0));
-            this.gameTextureAtlas.load();
-        }
-        catch (final ITextureAtlasBuilder.TextureAtlasBuilderException e)
-        {
-            Debug.e(e);
-        }
-    }
-
-    private void loadGameFonts()
-    {
 
     }
 
-    private void loadGameAudio()
-    {
-
-    }
 
     public void loadSplashScreen()
     {
