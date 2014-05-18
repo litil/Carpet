@@ -24,11 +24,13 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             
             new Carpet\Bundle\PetBundle\CarpetPetBundle(),
             new Carpet\Bundle\AdminBundle\CarpetAdminBundle(),
+            new Carpet\Bundle\DataBundle\CarpetDataBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

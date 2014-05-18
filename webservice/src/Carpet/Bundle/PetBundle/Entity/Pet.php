@@ -50,6 +50,13 @@ class Pet
     private $name;
 
     /**
+     * @var points
+     * 
+     * @ORM\Column(name="points", type="integer")
+     */
+    private $points;
+    
+    /**
      *
      * @var string
      * 
@@ -71,10 +78,18 @@ class Pet
      */
     private $possessions;
 
+        
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="pet")
+     */
+    private $events;
+
     
-    public function __construct() 
+    public function __construct()
     {
         $this->possessions = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     /**
@@ -239,5 +254,61 @@ class Pet
     public function __toString() 
     {
         return $this->id . '-' . $this->name;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \Carpet\Bundle\PetBundle\Entity\Event $events
+     * @return Pet
+     */
+    public function addEvent(\Carpet\Bundle\PetBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \Carpet\Bundle\PetBundle\Entity\Event $events
+     */
+    public function removeEvent(\Carpet\Bundle\PetBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     * @return Pet
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer 
+     */
+    public function getPoints()
+    {
+        return $this->points;
     }
 }
