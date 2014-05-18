@@ -1,6 +1,8 @@
 package com.matelli.carpet.activities;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.LimitedFPSEngine;
@@ -47,6 +49,19 @@ public class EnfantActivity extends BaseGameActivity {
 		public void onReceive(Context context, Intent intent) {
 			// update Chien  view 
 			Log.d(TAG, "VITESSE LIMITE ATTEINTE");
+
+            SceneManager.getInstance().beginOverSpeed();
+
+
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    SceneManager.getInstance().endOverSpeed();
+                }
+            }, 3000);
+
+
 			
 		}
     };

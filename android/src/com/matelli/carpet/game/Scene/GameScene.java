@@ -14,11 +14,16 @@ import org.andengine.opengl.util.GLState;
 import org.andengine.util.HorizontalAlign;
 import org.andengine.util.color.Color;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by fl0 on 17/05/2014.
  */
 public class GameScene extends BaseScene
 {
+    private static final int CAR_POSITION_ORIGIN_X = 1526;
+    private static final float CAR_Y_POSITION = 467f;
     private HUD gameHUD;
     private Text scoreText;
     private Sprite dogSprite;
@@ -70,7 +75,7 @@ public class GameScene extends BaseScene
 
         this.dogSprite = sprite;
 
-        this.carSprite = new Sprite(1526, 467, resourcesManager.car_item, vbom);
+        this.carSprite = new Sprite(CAR_POSITION_ORIGIN_X, CAR_Y_POSITION, resourcesManager.car_item, vbom);
         attachChild(this.carSprite);
 
     }
@@ -136,4 +141,50 @@ public class GameScene extends BaseScene
         Log.d("background created", "florianburel");
     }
 
+    public void MoveCarXPositionFromOrigin(int offsetX, int animationDuration) {
+
+
+        if(this.carSprite == null) return;
+
+        int newX = CAR_POSITION_ORIGIN_X + offsetX;
+
+
+        float currentPosition = this.carSprite.getX();
+
+
+        int step = currentPosition > newX ? -1 : 1;
+
+        AnimatedSprite dog = (AnimatedSprite) this.dogSprite;
+
+        if(step == -1)
+        {
+            dog.animate(100);
+        }
+       else
+
+        {
+            dog.animate(50);
+        }
+
+        while (this.carSprite.getX() != newX)
+        {
+
+
+
+
+            try {
+                Thread.sleep((long) (1000 * animationDuration / Math.abs(currentPosition - newX)));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.carSprite.setX(this.carSprite.getX() + step);
+
+
+        }
+
+
+
+
+
+    }
 }

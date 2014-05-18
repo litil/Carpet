@@ -20,7 +20,6 @@ public class SceneManager
 
     private BaseScene splashScene;
     private BaseScene gameScene;
-    private BaseScene loadingScene;
 
     //---------------------------------------------
     // VARIABLES
@@ -57,15 +56,13 @@ public class SceneManager
     {
         switch (sceneType)
         {
+            case SCENE_LOADING:
             case SCENE_MENU:
             case SCENE_GAME:
                 setScene(gameScene);
                 break;
             case SCENE_SPLASH:
                 setScene(splashScene);
-                break;
-            case SCENE_LOADING:
-                setScene(loadingScene);
                 break;
             default:
                 break;
@@ -125,5 +122,27 @@ public class SceneManager
          ResourcesManager.getInstance().unloadSplashScreen();
         splashScene.disposeScene();
         splashScene = null;
+    }
+
+
+
+    public void beginOverSpeed()
+    {
+        if(this.gameScene == null) return;
+
+        GameScene scene = (GameScene) this.gameScene;
+
+        scene.MoveCarXPositionFromOrigin(400, 1);
+
+    }
+
+    public void endOverSpeed()
+    {
+        if(this.gameScene == null) return;
+
+        GameScene scene = (GameScene) this.gameScene;
+
+        scene.MoveCarXPositionFromOrigin(0, 1);
+
     }
 }
