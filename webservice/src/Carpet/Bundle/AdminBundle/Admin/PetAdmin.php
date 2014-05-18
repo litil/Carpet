@@ -16,6 +16,7 @@ class PetAdmin extends Admin
         $formMapper
             ->with('Infos')
                 ->add('name', 'text', array('label' => 'Nom'))
+                ->add('points', 'integer', array('label' => 'Points'))
                 ->add('mood', 'integer', array('label' => 'Humeur'))
             ->with('Gadgets')
                 ->add('possessions', 'sonata_type_collection', array(), array(
@@ -24,6 +25,13 @@ class PetAdmin extends Admin
                     'sortable'  => 'position',
                     'placeholder' => 'Pas de gadgets pour l\'instant'
             ))
+            ->with('Évènements')
+                ->add('events', 'sonata_type_collection', array(), array(
+                    'inline' => 'table',
+                    'sortable'  => 'position',
+                    'placeholder' => 'Pas d\'évènements pour l\'instant'
+            ))
+                
         ;
     }
 
@@ -32,6 +40,7 @@ class PetAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('points')
             ->add('mood')
         ;
     }
@@ -41,6 +50,7 @@ class PetAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('points')
             ->add('mood')
         ;
     }

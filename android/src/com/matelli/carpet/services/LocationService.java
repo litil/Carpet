@@ -82,16 +82,13 @@ public class LocationService extends Service {
 				public void run() {
 					while(true) {
 						try {
-							Log.d(TAG, "1111111");
 							Thread.sleep(CarpetConstantes.TIME_CHECK_REPOS);
 						} catch (Exception e) {
 							// TODO: handle exception
 						}
-						Log.d(TAG, "2222222222");
 						Intent intent = new Intent();
 						intent.setAction(CarpetConstantes.BROADCAST_REPOS);
 						sendBroadcast(intent);
-						Log.d(TAG, "3333333333");
 					}
 				}
 			}).start();

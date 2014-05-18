@@ -1,0 +1,7 @@
+pets:
+    type:     rest
+    resource: Carpet\Bundle\PetBundle\Controller\PetController
+    
+events:
+    type:     rest
+    resource: Carpet\Bundle\PetBundle\Controller\EventController

@@ -25,32 +25,26 @@ public final class R {
     }
     public static final class drawable {
         public static final int action_search=0x7f020000;
-        public static final int dashboard=0x7f020001;
-        public static final int drawer_shadow=0x7f020002;
-        public static final int earth=0x7f020003;
-        public static final int facebook_icon=0x7f020004;
-        public static final int fb_menu=0x7f020005;
-        public static final int ic_drawer=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int login_facebook_button=0x7f020008;
-        public static final int logo_square=0x7f020009;
-        public static final int play_button=0x7f02000a;
-        public static final int settings=0x7f02000b;
-        public static final int splashscreen=0x7f02000c;
-        public static final int trajets=0x7f02000d;
-        public static final int user_pic=0x7f02000e;
+        public static final int drawer_shadow=0x7f020001;
+        public static final int facebook_icon=0x7f020002;
+        public static final int fb_menu=0x7f020003;
+        public static final int ic_drawer=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int login_facebook_button=0x7f020006;
+        public static final int logo_square=0x7f020007;
+        public static final int play_button=0x7f020008;
+        public static final int splashscreen=0x7f020009;
+        public static final int user_pic=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f090009;
+        public static final int action_settings=0x7f090007;
         public static final int button_loggin=0x7f090003;
         public static final int content_frame=0x7f090001;
         public static final int drawer_layout=0x7f090000;
-        public static final int facebook_icon=0x7f090004;
-        public static final int frag=0x7f090006;
-        public static final int image=0x7f090007;
+        public static final int frag=0x7f090004;
+        public static final int image=0x7f090005;
         public static final int left_drawer=0x7f090002;
-        public static final int login_with_facebook=0x7f090005;
-        public static final int play_game=0x7f090008;
+        public static final int play_game=0x7f090006;
     }
     public static final class layout {
         public static final int activity_conducteur=0x7f030000;

@@ -13,13 +13,11 @@ class PossessionAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper = $formMapper
+        $formMapper
             ->add('amount', 'integer')
             ->add('pet')
             ->add('gadget')
         ;
-        
-        
     }
 
     // Fields to be shown on filter forms
