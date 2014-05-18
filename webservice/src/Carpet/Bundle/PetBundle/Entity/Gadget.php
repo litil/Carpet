@@ -70,7 +70,7 @@ class Gadget
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="blob")
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
