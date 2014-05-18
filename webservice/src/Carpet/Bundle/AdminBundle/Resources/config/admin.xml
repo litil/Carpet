@@ -6,7 +6,7 @@
     <services>
         
         <service id="sonata.admin.pet" class="Carpet\Bundle\AdminBundle\Admin\PetAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Content" label="Pet"/>
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Pets"/>
             <argument />
             <argument>Carpet\Bundle\PetBundle\Entity\Pet</argument>
             <argument />
@@ -16,7 +16,7 @@
         </service>
         
         <service id="sonata.admin.gadget" class="Carpet\Bundle\AdminBundle\Admin\GadgetAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Content" label="Gadget"/>
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Gadgets"/>
             <argument />
             <argument>Carpet\Bundle\PetBundle\Entity\Gadget</argument>
             <argument />
@@ -32,6 +32,37 @@
             <argument />
             <call method="setTranslationDomain">
                 <argument>CarpetPetBundle</argument>
+            </call>
+        </service>
+        
+        <service id="sonata.admin.event" class="Carpet\Bundle\AdminBundle\Admin\EventAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Évènements"/>
+            <argument />
+            <argument>Carpet\Bundle\PetBundle\Entity\Event</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>CarpetPetBundle</argument>
+            </call>
+        </service>
+      
+        <service id="sonata.admin.route" class="Carpet\Bundle\AdminBundle\Admin\RouteAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Route"/>
+            <argument />
+            <argument>Carpet\Bundle\DataBundle\Entity\Route</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>CarpetDataBundle</argument>
+            </call>
+        </service>
+      
+      
+        <service id="sonata.admin.routeSegment" class="Carpet\Bundle\AdminBundle\Admin\RouteSegmentAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Segment"/>
+            <argument />
+            <argument>Carpet\Bundle\DataBundle\Entity\RouteSegment</argument>
+            <argument />
+            <call method="setTranslationDomain">
+                <argument>CarpetDataBundle</argument>
             </call>
         </service>
       

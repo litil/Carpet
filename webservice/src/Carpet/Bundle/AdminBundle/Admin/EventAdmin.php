@@ -8,15 +8,15 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PossessionAdmin extends Admin
+class EventAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('amount', 'integer')
             ->add('pet')
-            ->add('gadget')
+            ->add('type', 'string')
+            ->add('created', 'datetime')
         ;
     }
 
@@ -25,8 +25,7 @@ class PossessionAdmin extends Admin
     {
         $datagridMapper
             ->add('pet')
-            ->add('gadget')
-            ->add('amount')
+            ->add('created')
         ;
     }
 
@@ -36,8 +35,8 @@ class PossessionAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('pet')
-            ->add('gadget')
-            ->add('amount')
+            ->add('type', 'string')
+            ->add('created', 'datetime')
         ;
     }
 }

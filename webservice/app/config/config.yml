@@ -4,7 +4,7 @@ imports:
     
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -81,10 +81,37 @@ sonata_doctrine_orm_admin:
     
 sonata_admin:
     title:      Magic Carpet
-    
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [carpet.admin.group.pet]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [carpet.admin.group.nav]
+        groups:
+            carpet.admin.group.pet:
+                label: Données de l'application
+                items:
+                    - sonata.admin.pet
+                    - sonata.admin.gadget
+                    - sonata.admin.event
+            carpet.admin.group.nav:
+                label: Données de navigation
+                items:
+                    - sonata.admin.route
+
 stof_doctrine_extensions:
     default_locale: fr_FR
     orm:
         default:
             sluggable: true
             timestampable: true
+            
+fos_rest:
+    routing_loader:
+        include_format: false

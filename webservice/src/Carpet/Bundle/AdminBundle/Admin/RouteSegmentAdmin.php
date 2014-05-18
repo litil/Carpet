@@ -8,15 +8,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PossessionAdmin extends Admin
+class RouteSegmentAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('amount', 'integer')
-            ->add('pet')
-            ->add('gadget')
+            ->add('start')
+            ->add('end')
+            ->add('start_lat')
+            ->add('start_lon')
+            ->add('end_lat')
+            ->add('end_lon')
+            ->add('distance')
+            ->add('duration')
         ;
     }
 
@@ -24,9 +29,10 @@ class PossessionAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('pet')
-            ->add('gadget')
-            ->add('amount')
+            ->add('start')
+            ->add('end')
+            ->add('distance')
+            ->add('duration')
         ;
     }
 
@@ -35,9 +41,14 @@ class PossessionAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('pet')
-            ->add('gadget')
-            ->add('amount')
+            ->add('start')
+            ->add('end')
+            ->add('start_lat')
+            ->add('start_lon')
+            ->add('end_lat')
+            ->add('end_lon')
+            ->add('distance')
+            ->add('duration')
         ;
     }
 }
