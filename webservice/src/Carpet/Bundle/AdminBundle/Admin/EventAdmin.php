@@ -15,7 +15,7 @@ class EventAdmin extends Admin
     {
         $formMapper
             ->add('pet')
-            ->add('type', 'string')
+            ->add('type')
             ->add('created', 'datetime')
         ;
     }

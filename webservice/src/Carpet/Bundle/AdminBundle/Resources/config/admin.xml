@@ -46,7 +46,7 @@
         </service>
       
         <service id="sonata.admin.route" class="Carpet\Bundle\AdminBundle\Admin\RouteAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Content" label="Route"/>
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Trajets"/>
             <argument />
             <argument>Carpet\Bundle\DataBundle\Entity\Route</argument>
             <argument />
@@ -57,7 +57,7 @@
       
       
         <service id="sonata.admin.routeSegment" class="Carpet\Bundle\AdminBundle\Admin\RouteSegmentAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Content" label="Segment"/>
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Segments"/>
             <argument />
             <argument>Carpet\Bundle\DataBundle\Entity\RouteSegment</argument>
             <argument />

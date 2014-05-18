@@ -34,3 +34,40 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+bazinga_faker:
+    locale: fr_FR
+    orm: doctrine
+    entities:
+        Carpet\Bundle\PetBundle\Entity\Pet:
+            number: 50
+            custom_formatters:
+                mood:   { method: randomDigitNotNull }
+                name:   { method: word }
+        Carpet\Bundle\PetBundle\Entity\Gadget:
+            number: 87
+        Carpet\Bundle\PetBundle\Entity\Possession:
+            number: 645
+        Carpet\Bundle\PetBundle\Entity\Event:
+            number: 1258
+        Carpet\Bundle\DataBundle\Entity\Route:
+            number: 248
+            custom_formatters:
+                startName: { method: address }
+                endName: { method: address }
+                start: { method: datetime }
+                end: { method: datetime }
+                startLat:   { method: latitude }
+                endLat:   { method: latitude }
+                startLon:   { method: longitude }
+                endLon:   { method: longitude }
+        Carpet\Bundle\DataBundle\Entity\RouteSegment:
+            number: 3259
+            custom_formatters:
+                start: { method: datetime }
+                end: { method: datetime }
+                startLat:   { method: latitude }
+                endLat:   { method: latitude }
+                startLon:   { method: longitude }
+                endLon:   { method: longitude }
+        
