@@ -48,10 +48,10 @@ public class WelcomeActivity extends RoboActivity {
 
 
 		Intent i = new Intent(this, LocationService.class);
-		//this.startService(i); 
+		this.startService(i); 
 		
 		Intent iRepos = new Intent(this, ReposService.class);
-		this.startService(iRepos); 
+		//this.startService(iRepos); 
 		
 		Intent iTraffic = new Intent(this, TrafficService.class);
 		//this.startService(iTraffic); 
