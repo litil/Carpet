@@ -29,8 +29,18 @@ public class User {
 		
 	}
 	
-	
-	
+	private final static User Instance = new User("John Doe", 42);
+
+    public static User getInstance()
+    {
+        return Instance;
+    }
+
+    private User(String login, int score)
+    {
+        this.setLogin(login);
+        this.setScore(score);
+    }
 	public static User createFakeUser(){
 		User user = new User();
 		

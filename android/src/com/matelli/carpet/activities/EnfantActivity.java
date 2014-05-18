@@ -17,6 +17,8 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -25,10 +27,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 
+import com.matelli.carpet.R;
 import com.matelli.carpet.application.CarpetApplication;
 import com.matelli.carpet.config.CarpetConstantes;
 import com.matelli.carpet.game.ResourcesManager;
 import com.matelli.carpet.game.Scene.SceneManager;
+import com.matelli.carpet.models.User;
 
 
 public class EnfantActivity extends BaseGameActivity {
@@ -73,10 +77,36 @@ public class EnfantActivity extends BaseGameActivity {
 			// update Score  view 
 			
 			Log.d(TAG, "NEW POINTS = " + intent.getIntExtra(CarpetConstantes.BROADCAST_EXTRA_SCORE, 0));
-			
-		}
+            User.getInstance().setScore(User.getInstance().getScore() + intent.getIntExtra(CarpetConstantes.BROADCAST_EXTRA_SCORE, 0));
+
+
+
+            String text = "Bonus bonne conduite: " + intent.getIntExtra(CarpetConstantes.BROADCAST_EXTRA_SCORE, 0) + " points";
+
+
+            notifyUser(text);
+
+            SceneManager.getInstance().updateUserScore();
+
+        }
     };
-    
+
+    private void notifyUser(String text) {
+
+        Notification.Builder mBuilder =
+                new Notification.Builder(this)
+                        .setSmallIcon(R.drawable.ic_drawer)
+                        .setContentTitle(text)
+                        .setContentText("Felicitations");
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+// mId allows you to update the notification later on.
+        int mId = 10;
+        mNotificationManager.notify(mId, mBuilder.build());
+
+    }
+
     IntentFilter filterTraffic = new IntentFilter(CarpetConstantes.BROADCAST_TRAFFIC);
     BroadcastReceiver trafficReceiver = new BroadcastReceiver() {
 		@Override

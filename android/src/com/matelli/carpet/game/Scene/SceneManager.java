@@ -33,6 +33,8 @@ public class SceneManager
 
     private Engine engine = ResourcesManager.getInstance().engine;
 
+
+
     public enum SceneType
     {
         SCENE_SPLASH,
@@ -144,5 +146,13 @@ public class SceneManager
 
         scene.MoveCarXPositionFromOrigin(0, 1);
 
+    }
+
+    public void updateUserScore() {
+        if(this.gameScene == null) return;
+
+        GameScene scene = (GameScene) this.gameScene;
+
+        scene.UpdateUserScore();
     }
 }

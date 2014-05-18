@@ -42,7 +42,7 @@ public class GameScene extends BaseScene
         // CREATE SCORE TEXT
         scoreText = new Text(1425, 74, resourcesManager.fonts[3], "Score: 0123456789", new TextOptions(HorizontalAlign.LEFT), vbom);
      //   scoreText.setAnchorCenter(0, 0);
-        scoreText.setText("Score: " + this.user.getScore());
+        scoreText.setText("Score: " + User.getInstance().getScore());
 
         gameHUD.attachChild(new Sprite(1400,50, resourcesManager.hud_background, vbom));
         gameHUD.attachChild(scoreText);
@@ -156,14 +156,14 @@ public class GameScene extends BaseScene
 
         AnimatedSprite dog = (AnimatedSprite) this.dogSprite;
 
-        if(step == -1)
+        if(step == 1)
         {
-            dog.animate(100);
+            dog.animate(50);
         }
        else
 
         {
-            dog.animate(50);
+            dog.animate(100);
         }
 
         while (this.carSprite.getX() != newX)
@@ -186,5 +186,9 @@ public class GameScene extends BaseScene
 
 
 
+    }
+
+    public void UpdateUserScore() {
+        scoreText.setText("Score: " + User.getInstance().getScore());
     }
 }
