@@ -34,19 +34,26 @@ public class LocationService extends Service {
 		if(coordonnees == null || coordonnees.size() == 0) {
 			coordonnees = FakeDataHelper.fillListWithFakeCoordonnees();
 
-			// On récupère le location manager et on l'initialise en mode test
+			// On rï¿½cupï¿½re le location manager et on l'initialise en mode test
 			app =(CarpetApplication)this.getApplication();
 			lm = app.getLm();
 
 			lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
 			lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-			// On lance le thread qui va changer les coordonnées géographiques
+			// On lance le thread qui va changer les coordonnï¿½es gï¿½ographiques
 			new Thread(new Runnable() {
 
 				@Override
 				public void run() {
-					for(Coordonnees coordonnee : coordonnees) {
+
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {
+
+
+                    }
+                    for(Coordonnees coordonnee : coordonnees) {
 						setMockLocation(coordonnee.getLatitude(), coordonnee.getLongitude(), 500, coordonnee.getVitesse());
 						try {
 							Thread.sleep(CarpetConstantes.TIME_CHECK_VITESSE);
@@ -57,7 +64,7 @@ public class LocationService extends Service {
 				}
 			}).start();
 
-			// On lance le thread qui va changer les coordonnées géographiques
+			// On lance le thread qui va changer les coordonnï¿½es gï¿½ographiques
 			new Thread(new Runnable() {
 
 				@Override
@@ -75,23 +82,20 @@ public class LocationService extends Service {
 				}
 			}).start();
 
-			// On lance le thread qui va changer les coordonnées géographiques
+			// On lance le thread qui va changer les coordonnï¿½es gï¿½ographiques
 			new Thread(new Runnable() {
 
 				@Override
 				public void run() {
 					while(true) {
 						try {
-							Log.d(TAG, "1111111");
 							Thread.sleep(CarpetConstantes.TIME_CHECK_REPOS);
 						} catch (Exception e) {
 							// TODO: handle exception
 						}
-						Log.d(TAG, "2222222222");
 						Intent intent = new Intent();
 						intent.setAction(CarpetConstantes.BROADCAST_REPOS);
 						sendBroadcast(intent);
-						Log.d(TAG, "3333333333");
 					}
 				}
 			}).start();
@@ -107,7 +111,7 @@ public class LocationService extends Service {
 		return null;
 	}
 
-	// Listener pour les changement de coordonnees géographiques
+	// Listener pour les changement de coordonnees gï¿½ographiques
 	private final LocationListener locationListener = new LocationListener() {
 
 		public void onLocationChanged(final Location location) {
@@ -115,7 +119,7 @@ public class LocationService extends Service {
 			double latitude = location.getLatitude();
 			Log.v("TEST", "Longitude : " + longitude + " - Latitude : " + latitude + " - Vitesse : " + location.getSpeed());
 
-			// TODO détecter depassement de vitesse et broadcaster un message
+			// TODO dï¿½tecter depassement de vitesse et broadcaster un message
 			if(location.getSpeed() > 50) {
 				// send broadcast
 				Log.e(TAG, "MAUVAISE VITESSE");
@@ -149,7 +153,7 @@ public class LocationService extends Service {
 	};
 
 	/**
-	 * Méthode permettant de créer de fausse coordonnées
+	 * Mï¿½thode permettant de crï¿½er de fausse coordonnï¿½es
 	 * 
 	 * @param latitude
 	 * @param longitude
@@ -176,7 +180,7 @@ public class LocationService extends Service {
 
 		try
 		{
-			// Permet de compléter la location avec tous les champs obligatoires
+			// Permet de complï¿½ter la location avec tous les champs obligatoires
 			java.lang.reflect.Method locationJellyBeanFixMethod = Location.class.getMethod("makeComplete");
 			if (locationJellyBeanFixMethod != null) {
 				locationJellyBeanFixMethod.invoke(newLocation);

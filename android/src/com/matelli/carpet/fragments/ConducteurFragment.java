@@ -1,5 +1,7 @@
 package com.matelli.carpet.fragments;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 
 import roboguice.fragment.RoboFragment;
@@ -7,6 +9,8 @@ import roboguice.inject.InjectView;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +44,16 @@ public class ConducteurFragment extends Fragment {
 		String entryTitle = getResources().getStringArray(R.array.menu_entry)[i];
 
 		int imageId = getResources().getIdentifier(entryTitle.toLowerCase(Locale.getDefault()), "drawable", getActivity().getPackageName());
-		((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
+		AssetManager am = currentActivity.getAssets();
+		InputStream is = null;
+		try {
+			is = am.open("backgrounds/"+entryTitle.toLowerCase(Locale.getDefault())+".jpg");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Drawable d = Drawable.createFromStream(is, null);
+		((ImageView) rootView.findViewById(R.id.image)).setImageDrawable(d);
 		getActivity().setTitle(entryTitle);
 
 
